@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<title>Write Entry</title>
+<div class="wrapper">
+    <div class="section">
+        <div class="box-area">
+            
+            <form method = "POST" action="">
+                {% csrf_token %}
+
+                {{ form.title }}
+                {{ form.description }}
+      
+
+                <input type="submit" value = "Post" />
+            </form>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}      

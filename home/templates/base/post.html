@@ -1,0 +1,29 @@
+{%  extends 'index.html' %}
+
+{% block content %}
+
+<head>
+    <title>Post</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png"
+        type="image/x-icon">
+</head>
+
+<div class="wrapper">
+    <div class="section">
+        <div class="box-area">
+            <h2 style="color: #2b2626">Post</h2>
+            
+            <hr>
+            {{ post.id }}  <br>
+            {{ post.author }} <br>
+            {{ post.title }} <br>
+            {{ post.description }} <br>
+            {{ post.created }} <br>
+            {{ post.updated }} <br>
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

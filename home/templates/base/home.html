@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<head>
+    <title>Home</title>
+    <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+        type="image/x-icon">
+</head>
+
+<div class="wrapper">
+    <div class="section">
+        <div class="box-area">
+
+            {% if request.user.is_staff %}
+            <a href="/new-post">New Post</a>
+            {% endif %}
+            
+            <h2 style="color: #2b2626">Homepage</h2>
+
+            {% for post in posts %}
+            {{ post.id }} <b><a href="/post/{{ post.id }}"> {{ post.title }} </a></b><br>
+            {% if request.user == post.author %}
+            <a href="/update-post/{{ post.id }}">Edit</a>
+            <a href="/delete-post/{{ post.id }}">Delete</a> <br>
+            {% endif %}
+            <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
