@@ -6,7 +6,7 @@
         margin: 0;
         padding: 0;
         font-family: 'Montserrat', sans-serif;
-        background: #e3e9f7;
+        background-image: linear-gradient(109.6deg, rgba(255, 228, 250, 1) 21.2%, rgba(199, 205, 254, 1) 81.1%);
     }
 
     nav ul {
@@ -46,6 +46,7 @@
         border-radius: 40px 0px 0px 40px;
         z-index: -1;
         transition: all 300ms ease-in-out;
+
     }
 
     nav ul li a:hover {
@@ -99,6 +100,10 @@
         <form method="GET" action="{% url 'home' %}">
             <input type="text" , name="q" , placeholder="Search...">
         </form>
+
+        <li>
+            <a href="/"><i class="fa fa-user"></i>   {{ request.user }}</a>
+        </li>
 
         <li class="logo"><img alt=""
                 src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png">

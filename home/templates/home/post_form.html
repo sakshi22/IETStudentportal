@@ -9,10 +9,9 @@
             <form method = "POST" action="">
                 {% csrf_token %}
 
-                {{ form.title }}
-                {{ form.description }}
+                {{ form.as_p }}
       
-
+                    
                 <input type="submit" value = "Post" />
             </form>
 
