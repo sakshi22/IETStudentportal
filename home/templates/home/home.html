@@ -12,10 +12,6 @@
     <div class="section">
         <div class="box-area">
             
-            {% if request.user.is_staff %}
-            <a href="/new-post">New Post</a>
-            {% endif %}
-            
             <h2 style="color: #2b2626">Homepage</h2>
 
             {% for post in posts %}

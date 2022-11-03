@@ -102,27 +102,39 @@
         </form>
 
         <li>
-            <a href="/"><i class="fa fa-user"></i>   {{ request.user }}</a>
+            <a href="/"><i class="fa fa-user"></i>   {{ request.user.first_name }}</a>
         </li>
 
         <li class="logo"><img alt=""
                 src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png">
         </li>
+
         <li>
             <a href="/"><i class="fa fa-home"></i>   home</a>
         </li>
+
+        {% if request.user.is_staff == False %}
         <li>
             <a href="/#"><i class="fa fa-bullhorn"></i>   announcements</a>
         </li>
+        {% endif %}
+
+        {% if request.user.is_staff == False %}
         <li>
             <a href="/#"><i class="fa fa-graduation-cap"></i>   accademics</a>
         </li>
+        {% endif %}
+
         <li>
             <a href="/#"><i class="fa fa-question-circle-o" aria-hidden="true"></i>   querries</a>
         </li>
+
+        {% if request.user.is_staff %}
         <li>
-            <a href="/#"><i class="fa fa-phone"></i>   contact</a>
+            <a href="/new-post"><i class="fa fa-plus" aria-hidden="true"></i>   new post</a>
         </li>
+        {% endif %}
+        
         <li>
             <a href="/logout"><i class="fa fa-sign-out"></i>   Logout</a>
         </li>
