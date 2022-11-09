@@ -6,11 +6,10 @@
     <div class="section">
         <div class="box-area">
             
-            <form method = "POST" action="">
+            <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
                 {% csrf_token %}
-
+                {{ form.media }}
                 {{ form.as_p }}
-      
                     
                 <input type="submit" value = "Post" />
             </form>

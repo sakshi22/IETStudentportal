@@ -18,6 +18,9 @@
             {{ post.author }} <br>
             {{ post.title }} <br>
             {{ post.description|linebreaks }} <br>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" alt=""> <br><br>
+            {% endif %}
             {{ post.created }} <br>
             {{ post.updated }} <br>
 
