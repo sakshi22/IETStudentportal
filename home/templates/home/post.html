@@ -1,4 +1,4 @@
-{%  extends 'index.html' %}
+{% extends 'index.html' %}
 
 {% block content %}
 
@@ -12,11 +12,11 @@
     <div class="section">
         <div class="box-area">
             <h2 style="color: #2b2626">Post</h2>
-            
+
             <hr>
-            {{ post.id }}  <br>
+            {{ post.id }} <br>
             {{ post.author }} <br>
-            {{ post.title }} <br>
+            <h3>{{ post.title }} </h3>
             {{ post.description|linebreaks }} <br>
             {% if post.image %}
             <img src="{{ post.image.url }}" alt=""> <br><br>
@@ -24,6 +24,32 @@
             {{ post.created }} <br>
             {{ post.updated }} <br>
 
+            <hr>
+
+            <div class="comments">
+                <h4>Class Comments</h3>
+                    {% for comment in comments %}
+                    <div>
+                        {% if comment.author == request.user %}
+                        <a href="{% url 'delete-comment' comment.id %}"> Delete </a>
+                        {% endif %}
+                        <small>
+                            @{{ comment.author }} : {{ comment.created|timesince }} ago <br>
+                            {{ comment.body }}
+                        </small>
+                    </div>
+                    <br>
+                    {% endfor %}
+            </div>
+
+            <hr> <br>
+
+            <div class="comment-form">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="body" placeholder="add a comment...">
+                </form>
+            </div>
 
         </div>
     </div>

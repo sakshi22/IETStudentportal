@@ -47,7 +47,18 @@ def home(request):
 @login_required(login_url='login')
 def post(request, pid):
     post = Post.objects.get(id=pid)
-    return render(request, 'home/post.html', {'post' : post})
+    comments = post.comments_set.all()
+    context = {'post' : post, 'comments' : comments} 
+
+    if request.method == "POST":
+        comment = Comments.objects.create(
+            author=request.user,
+            post=post,
+            body=request.POST.get('body')
+        )
+        return redirect('post', pid=post.id)
+
+    return render(request, 'home/post.html', context)
 
 
 @login_required(login_url='login')
@@ -101,6 +112,19 @@ def deletePost(request, pid):
 
     return render(request, 'home/delete.html', {'obj' : post})
 
+
+@login_required(login_url='login')
+def deleteComment(request, cid):
+    comment = Comments.objects.get(id=cid)
+    
+    if request.user != comment.author:
+        return HttpResponse('You are not authorized to delete this comment')
+
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('home')
+
+    return render(request, 'home/delete.html', {'obj' : comment})
 
 
 # Create your views here.
