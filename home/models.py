@@ -3,6 +3,24 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+BRANCH = (
+    ('all', 'ALL'),
+    ('cs', 'CS'),
+    ('it', 'IT'),
+    ('tc', 'ETC'),
+    ('ei', 'EI'),
+    ('cv', 'CIVIL'),
+    ('me', 'MECH'),
+)
+
+YEAR = (
+    ('all', 'ALL'),
+    ('1', 'I Year'),
+    ('2', 'II Year'),
+    ('3', 'III Year'),
+    ('4', 'IV Year'),
+)
+
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -10,6 +28,8 @@ class Post(models.Model):
     description = models.TextField(null=True, blank=True)
     image = models.ImageField(null=True, blank=True, upload_to='images/')
     created = models.DateTimeField(auto_now_add=True)
+    branch = models.CharField(max_length=6, choices=BRANCH, default='all')
+    year = models.CharField(max_length=6, choices=YEAR, default='all')
     updated = models.DateTimeField(auto_now=True)
 
     class Meta:

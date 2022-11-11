@@ -11,21 +11,26 @@
 <div class="wrapper">
     <div class="section">
         <div class="box-area">
-            
+
             <h2 style="color: #2b2626">Homepage</h2>
 
             {% for post in posts %}
-            {% if request.user.is_staff == False %}
-            {{ post.id }} <b><a href="/post/{{ post.id }}"> {{ post.title }} </a></b><br>
-            {% elif request.user == post.author %}
-            {{ post.id }} <b><a href="/post/{{ post.id }}"> {{ post.title }} </a></b><br>
-            {% endif %}
+                {% if request.user.is_staff == False %}
+                    {% if post.branch == 'all' or post.branch == branch %}
+                        {% if post.year == 'all' or post.year == year %}
+                            {{ post.id }} <b><a href="/post/{{ post.id }}"> {{ post.title }} </a></b><br>
+                        {% endif %}
+                    {% endif %}
 
-            {% if request.user == post.author %}
-            <a href="/update-post/{{ post.id }}">Edit</a>
-            <a href="/delete-post/{{ post.id }}">Delete</a> <br>
-            {% endif %}
-            <hr>
+                {% elif request.user == post.author %}
+                    {{ post.id }} <b><a href="/post/{{ post.id }}"> {{ post.title }} </a></b><br>
+                {% endif %}
+
+                {% if request.user == post.author %}
+                    <a href="/update-post/{{ post.id }}">Edit</a>
+                    <a href="/delete-post/{{ post.id }}">Delete</a> <br>
+                {% endif %}
+                <hr>
             {% endfor %}
 
         </div>

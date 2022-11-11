@@ -6,6 +6,20 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import User, Post, Comments
 from .forms import PostForm
+from datetime import date
+
+
+def studentYear(email):
+    admission_year = int(email[:2])
+    cur_yr, cur_month = date.today().year, date.today().month
+    year = cur_yr - admission_year
+    if cur_month > 6: year += 1
+    return str(year)
+
+
+def studentBranch(email):
+    branch = email[3:5]
+    return branch
 
 
 def loginPage(request):
@@ -42,7 +56,11 @@ def logoutUser(request):
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     posts = Post.objects.filter(Q(title__icontains=q) | Q(description__icontains=q))
-    return render(request, 'home/home.html', {'posts' : posts})
+    context = {'posts' : posts}
+    if (request.user.is_staff == False):
+        context['year'] = studentYear(request.user.email)
+        context['branch'] = studentBranch(request.user.email)
+    return render(request, 'home/home.html', context)
 
 
 @login_required(login_url='login')
