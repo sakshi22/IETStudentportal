@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="wrapper">
+    <div class="section">
+        <div class="box-area">
+            
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Post" />
+            </form>
+
+            <h2 style="color: #2b2626">queries</h2>
+
+            {% for query in queries %}
+                {{ query.author }} | {{ query.title }} |
+                {% if request.user == query.author %}
+                    <a href="delete-query/{{ query.id }}">Delete</a>
+                {% endif %}
+                <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

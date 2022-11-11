@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'home.apps.HomeConfig',
+    'queries.apps.QueriesConfig',
 
     'social_django'
 ]
