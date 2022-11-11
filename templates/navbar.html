@@ -115,13 +115,13 @@
 
         {% if request.user.is_staff == False %}
         <li>
-            <a href="/#"><i class="fa fa-bullhorn"></i>   announcements</a>
+            <a href="/announcement"><i class="fa fa-bullhorn"></i>   announcements</a>
         </li>
         {% endif %}
 
         {% if request.user.is_staff == False %}
         <li>
-            <a href="/#"><i class="fa fa-graduation-cap"></i>   accademics</a>
+            <a href="/academic"><i class="fa fa-graduation-cap"></i>   accademics</a>
         </li>
         {% endif %}
 

@@ -9,6 +9,9 @@ urlpatterns = [
 
 
     path('', views.home, name='home'),
+    path('announcement/', views.announcement, name='announcement'),
+    path('academic/', views.academic, name='academic'),
+
     path('post/<str:pid>/', views.post, name='post'),
 
     path('new-post/', views.newPost, name='new-post'),

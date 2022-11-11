@@ -44,6 +44,21 @@ def home(request):
     posts = Post.objects.filter(Q(title__icontains=q) | Q(description__icontains=q))
     return render(request, 'home/home.html', {'posts' : posts})
 
+
+@login_required(login_url='login')
+def announcement(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    posts = Post.objects.filter((Q(title__icontains=q) | Q(description__icontains=q)), Q(author__email__exact='anuj.deshmukh17@gmail.com'))
+    return render(request, 'home/announcement.html', {'posts' : posts})
+
+
+@login_required(login_url='login')
+def academic(request):
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+    posts = Post.objects.filter((Q(title__icontains=q) | Q(description__icontains=q)), ~Q(author__email__exact='anuj.deshmukh17@gmail.com'))
+    return render(request, 'home/academic.html', {'posts' : posts})
+
+
 @login_required(login_url='login')
 def post(request, pid):
     post = Post.objects.get(id=pid)

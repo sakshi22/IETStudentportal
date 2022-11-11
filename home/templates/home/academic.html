@@ -3,7 +3,7 @@
 {% block content %}
 
 <head>
-    <title>Home</title>
+    <title>Academics</title>
     <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
         type="image/x-icon">
 </head>
@@ -11,8 +11,8 @@
 <div class="wrapper">
     <div class="section">
         <div class="box-area">
-            
-            <h2 style="color: #2b2626">Homepage</h2>
+
+            <h2 style="color: #2b2626">Academics</h2>
 
             {% for post in posts %}
             {% if request.user.is_staff == False %}
