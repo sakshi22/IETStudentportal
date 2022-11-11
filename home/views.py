@@ -10,7 +10,7 @@ from datetime import date
 
 
 def studentYear(email):
-    admission_year = int(email[:2])
+    admission_year = 2000 + int(email[:2])
     cur_yr, cur_month = date.today().year, date.today().month
     year = cur_yr - admission_year
     if cur_month > 6: year += 1
@@ -46,7 +46,7 @@ def loginPage(request):
             messages.error(request, 'Invalid username or password!')
             
 
-    return render(request, 'home/login.html')
+    return render(request, 'login.html')
 
 def logoutUser(request):
     logout(request)
@@ -67,14 +67,22 @@ def home(request):
 def announcement(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     posts = Post.objects.filter((Q(title__icontains=q) | Q(description__icontains=q)), Q(author__email__exact='anuj.deshmukh17@gmail.com'))
-    return render(request, 'home/announcement.html', {'posts' : posts})
+    context = {'posts' : posts}
+    if (request.user.is_staff == False):
+        context['year'] = studentYear(request.user.email)
+        context['branch'] = studentBranch(request.user.email)
+    return render(request, 'home/announcement.html', context)
 
 
 @login_required(login_url='login')
 def academic(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     posts = Post.objects.filter((Q(title__icontains=q) | Q(description__icontains=q)), ~Q(author__email__exact='anuj.deshmukh17@gmail.com'))
-    return render(request, 'home/academic.html', {'posts' : posts})
+    context = {'posts' : posts}
+    if (request.user.is_staff == False):
+        context['year'] = studentYear(request.user.email)
+        context['branch'] = studentBranch(request.user.email)
+    return render(request, 'home/academic.html', context)
 
 
 @login_required(login_url='login')
@@ -143,7 +151,7 @@ def deletePost(request, pid):
         post.delete()
         return redirect('home')
 
-    return render(request, 'home/delete.html', {'obj' : post})
+    return render(request, 'delete.html', {'obj' : post})
 
 
 @login_required(login_url='login')
@@ -157,7 +165,7 @@ def deleteComment(request, cid):
         comment.delete()
         return redirect('home')
 
-    return render(request, 'home/delete.html', {'obj' : comment})
+    return render(request, 'delete.html', {'obj' : comment})
 
 
 # Create your views here.

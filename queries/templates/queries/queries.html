@@ -1,25 +1,46 @@
 {% extends 'index.html' %}
 
+{% load static %}
+
 {% block content %}
+
+<head>
+    <title>Queries</title>
+    <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+        type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/post_box.css' %}">
+</head>
 
 <div class="wrapper">
     <div class="section">
         <div class="box-area">
-            
+
+            {% if request.user.is_staff == False %}
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Post" />
             </form>
-
-            <h2 style="color: #2b2626">queries</h2>
+            <hr>
+            {% endif %}
 
             {% for query in queries %}
-                {{ query.author }} | {{ query.title }} |
-                {% if request.user == query.author %}
-                    <a href="delete-query/{{ query.id }}">Delete</a>
-                {% endif %}
-                <hr>
+            <div class="post">
+                <div class="post-author">
+                    <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+
+                    <div class="details">
+                        <h2 style="font-size: 14px;">{{ query.author }}</h2>
+                        <h2 style="font-size: 18px;"> {{ query.title }}</h2>
+                        <h2 style="font-size: 12px;">{{ query.created }}</h2>
+                        <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ query.description }}</h2>
+                        {% if request.user == query.author %}
+                        <a href="delete-query/{{ query.id }}">Delete</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
             {% endfor %}
 
         </div>
