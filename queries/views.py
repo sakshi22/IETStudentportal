@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .models import Query
+from .models import Query, Answer
 from django.db.models import Q
 from .forms import QueryForm
 from datetime import date
@@ -41,3 +41,20 @@ def deleteQuery(request, qid):
     return render(request, 'home/delete.html', {'obj' : query})
     
 
+
+@login_required(login_url='login')
+def query(request, qid):
+    query = Query.objects.get(id=qid)
+    answers = query.answer_set.all()
+
+    context = {'query' : query, 'answers' : answers} 
+
+    if request.method == "POST":
+        answer = Answer.objects.create(
+            author=request.user,
+            query=query,
+            body=request.POST.get('body')
+        )
+        return redirect('query', qid=query.id)
+
+    return render(request, 'queries/query.html', context)

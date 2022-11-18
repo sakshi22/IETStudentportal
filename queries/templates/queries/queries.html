@@ -25,21 +25,23 @@
             {% endif %}
 
             {% for query in queries %}
-            <div class="post">
-                <div class="post-author">
-                    <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+            {% if query.author == request.user or request.user.is_staff %}
+                <div onclick="location.href='query/{{ query.id }}'" class="post">
+                    <div class="post-author">
+                        <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
 
-                    <div class="details">
-                        <h2 style="font-size: 14px;">{{ query.author }}</h2>
-                        <h2 style="font-size: 18px;"> {{ query.title }}</h2>
-                        <h2 style="font-size: 12px;">{{ query.created }}</h2>
-                        <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ query.description }}</h2>
-                        {% if request.user == query.author %}
-                        <a href="delete-query/{{ query.id }}">Delete</a>
-                        {% endif %}
+                        <div class="details">
+                            <h2 style="font-size: 14px;">{{ query.author }}</h2>
+                            <h2 style="font-size: 18px;"> {{ query.title }}</h2>
+                            <h2 style="font-size: 12px;">{{ query.created }}</h2>
+                            <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ query.description }}</h2>
+                            {% if request.user == query.author %}
+                            <a href="delete-query/{{ query.id }}">Delete</a>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% endif %}
 
             {% endfor %}
 

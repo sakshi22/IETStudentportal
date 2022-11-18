@@ -7,4 +7,6 @@ urlpatterns = [
 
     path('', views.queryPage, name='queries'),
     path('delete-query/<str:qid>/', views.deleteQuery, name='delete-query'),
+    path('query/<str:qid>/', views.query, name='query'),
+
 ]

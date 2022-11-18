@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<head>
+    <title>Query</title>
+</head>
+
+<div class="wrapper">
+    <div class="section">
+        <div class="box-area">
+            <h2 style="color: #2b2626">query</h2>
+
+            <hr>
+            {{ query.id }} <br>
+            {{ query.author }} <br>
+            <h3>{{ query.title }} </h3>
+            {{ query.description|linebreaks }} <br>
+            {{ query.created }} <br>
+            {{ query.updated }} <br>
+
+            <hr>
+
+            <div class="answers">
+                <h4>Answers</h3>
+                    {% for answer in answers %}
+                    <div>
+
+                        <small>
+                            @{{ answer.author }} : {{ answer.created|timesince }} ago <br>
+                            {{ answer.body }}
+                        </small>
+                    </div>
+                    <br>
+                    {% endfor %}
+            </div>
+
+            <hr> <br>
+
+            {% if request.user.is_staff %}
+            <div class="answer-form">
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <input type="text" name="body" placeholder="add a answer...">
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
