@@ -18,8 +18,8 @@
             {{ post.author }} <br>
             <h3>{{ post.title }} </h3>
             {{ post.description|linebreaks }} <br>
-            {% if post.image %}
-            <img src="{{ post.image.url }}" alt=""> <br><br>
+            {% if post.file %}
+            <a href="{{ post.file.url }}"> File </a> <br><br>
             {% endif %}
             {{ post.created }} <br>
             {{ post.updated }} <br>
