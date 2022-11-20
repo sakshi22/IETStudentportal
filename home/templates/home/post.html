@@ -1,58 +1,74 @@
 {% extends 'index.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <head>
     <title>Post</title>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png"
         type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'styles/post.css' %}">
 </head>
 
-<div class="wrapper">
-    <div class="section">
-        <div class="box-area">
-            <h2 style="color: #2b2626">Post</h2>
+<style>
+    .box {
+        overflow-y: hidden;
+    }
+</style>
 
-            <hr>
-            {{ post.id }} <br>
-            {{ post.author }} <br>
-            <h3>{{ post.title }} </h3>
-            {{ post.description|linebreaks }} <br>
-            {% if post.file %}
-            <a href="{{ post.file.url }}"> File </a> <br><br>
-            {% endif %}
-            {{ post.created }} <br>
-            {{ post.updated }} <br>
+<div class="outer_post">
+    <div class="in_post">
 
-            <hr>
-
-            <div class="comments">
-                <h4>Class Comments</h3>
-                    {% for comment in comments %}
-                    <div>
-                        {% if comment.author == request.user %}
-                        <a href="{% url 'delete-comment' comment.id %}"> Delete </a>
-                        {% endif %}
-                        <small>
-                            @{{ comment.author }} : {{ comment.created|timesince }} ago <br>
-                            {{ comment.body }}
-                        </small>
-                    </div>
-                    <br>
-                    {% endfor %}
-            </div>
-
-            <hr> <br>
-
-            <div class="comment-form">
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    <input type="text" name="body" placeholder="add a comment...">
-                </form>
-            </div>
-
+        <div class="in_post-title">
+            <h2 style="font-size:36px; display: inline;">{{ post.title }}</h2>
+            <h2 style="display: inline-flex; font-size: 14px;">{{ post.year }} : {{ post.branch }}</h2>
         </div>
+        <div class="logo">
+            <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+            <div class="inside">
+                <h2 style="font-size: 20px;">{{ post.author }}</h2>
+                <div class="time">
+                    <h1 style="font-size: 12px;">Created : {{ post.created }} | Updated : {{ post.updated }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="in_post-desc">
+            {{ post.description|linebreaks }}
+        </div>
+        {% if post.file %}
+        <a href="{{ post.file.url }}"> File </a> <br><br>
+        {% endif %}
+
+        <hr style="color: black">
     </div>
+
+    <div class="comment_box">
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="comment">
+                    <input type="text" name="body" placeholder="add a comment..." cols="30" rows="5">
+            </div>
+        </form>
+
+        {% for comment in comments %}
+        <div>
+            {% if comment.author == request.user %}
+            <a href="{% url 'delete-comment' comment.id %}"> Delete </a>
+            {% endif %}
+            <small>
+                @{{ comment.author }} : {{ comment.created|timesince }} ago <br>
+                {{ comment.body }}
+            </small>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+
 </div>
+
+
+<script src="{% static 'styles/post.js' %}"></script>
 
 {% endblock content %}

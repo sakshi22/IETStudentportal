@@ -1,19 +1,35 @@
 {% extends 'index.html' %}
 
-{% block content %}
-<div class="wrapper">
-    <div class="section">
-        <div class="box-area">
+{% load static %}
 
-            <form method="POST" action="">
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'styles/delete.css' %}">
+
+
+<form method="POST" action="">
+    {% csrf_token %}
+    <div class="delete">
+        <p style="font-weight:bold;font-size:25px;text-align:center;margin-left: -25px;">Are you sure you
+            want to delete
+            "{{ obj }}"</p>
+
+        <a style="margin-left:230px;padding-right: 15px; font-size: 20px;" href="{{ request.META.HTTP_REFERER }}">Go
+            Back</a>
+        <input type="submit" value="Confirm">
+    </div>
+</form>
+
+
+
+
+<!-- <form method="POST" action="">
                 {% csrf_token %}
                 <p>Are you sure you want to delete "{{ obj }}"</p>
 
                 <a href="{{ request.META.HTTP_REFERER }}">Go Back</a>
                 <input type="submit" value="Confirm">
-            </form>
-        </div>
-    </div>
-</div>
+            </form> -->
+
 
 {% endblock content %}

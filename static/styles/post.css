@@ -1,0 +1,113 @@
+.in_post {
+    position: relative;
+    width: 70%;
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+    margin-left: 270px;
+    background: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    border-bottom: 1px;
+    align-items: center;
+}
+
+.in_post-title {
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-bottom: 20px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.in_post h2 {
+    text-transform: uppercase;
+
+}
+
+.in_post img {
+    position: absolute;
+    width: 50px;
+    margin-left: 0px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.logo {
+    width: 100%;
+    display: inline-flex;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.inside {
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    padding-top: -100px;
+}
+
+.inside h2 {
+    margin-top: 20px;
+    padding-top: 0px;
+}
+
+.inside .time {
+    margin-top: -25px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.outer_post {
+    width: 100%;
+    position: relative;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    bottom: 10px;
+}
+
+.comment_box {
+    width: 70%;
+    height: 40%;
+    margin-top: 50px;
+    margin-left: 275px;
+    box-sizing: border-box;
+    box-shadow: 0 3px 3px rgba(33, 27, 55, 0.5);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+textarea {
+    height: 45px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    background-color: transparent;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 20px;
+    resize: none;
+    outline: none;
+    transition: 0.5s;
+
+}
+
+
+.comment input[type="text"] {
+    width: 100%;
+    height: 45px;
+    background-color: rgba(243, 240, 255, 0);
+    outline: none;
+    border: none;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+    overflow: auto;
+    resize: none;
+}

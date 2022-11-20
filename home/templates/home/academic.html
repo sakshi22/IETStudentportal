@@ -8,58 +8,64 @@
     <title>Academics</title>
     <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
         type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'styles/post_box.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 </head>
 
-<head>
-    <title>Academics</title>
-    <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
-        type="image/x-icon">
-</head>
+<style>
+    .box {
+        overflow-y: hidden;
+    }
+</style>
 
-<div class="wrapper">
-    <div class="section">
-        <div class="box-area">
+<div class="outer_post">
 
-            <h2 style="color: #2b2626">Academics</h2>
-
-            {% for post in posts %}
-            {% if request.user.is_staff == False %}
-            {% if post.branch == 'all' or post.branch == branch %}
-            {% if post.year == 'all' or post.year == year %}
-            <div onclick="location.href='/post/{{ post.id }}' " class="post">
-                <div class="post-author">
-                    <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
-                    <div class="details">
-                        <h2 style="font-size: 14px;">{{ post.author }}</h2>
-                        <h2 style="font-size: 18px;"> {{ post.title }}</h2>
-                        <h2 style="font-size: 12px;">{{ post.created }}</h2>
-                        <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ post.description }}</h2>
-                    </div>
+    {% for post in posts %}
+    {% if request.user.is_staff == False %}
+    {% if post.branch == 'all' or post.branch == branch %}
+    {% if post.year == 'all' or post.year == year %}
+    <div onclick="location.href='/post/{{ post.id }}'" class="post">
+        <div class="post-title">
+            <h2 style="font-size:26px;">{{ post.title }}</h2>
+            <h2 style="display: inline-flex; font-size: 14px;">{{ post.year }} : {{ post.branch }} </h2>
+        </div>
+        <div class="logo">
+            <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+            <div class="inside">
+                <h2 style="font-size: 20px;">{{ post.author }}</h2>
+                <div class="time">
+                    <h2 style="font-size: 12px;">{{ post.created }}</h2>
                 </div>
             </div>
-            {% endif %}
-            {% endif %}
-
-            {% elif request.user == post.author %}
-            <div onclick="location.href='/post/{{ post.id }}' " class="post">
-                <div class="post-author">
-                    <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
-                    <div class="details">
-                        <h2 style="font-size: 14px;">{{ post.author }}</h2>
-                        <h2 style="font-size: 18px;"> {{ post.title }}</h2>
-                        <h2 style="font-size: 12px;">{{ post.created }}</h2>
-                        <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ post.description }}</h2>
-                        <a href="/update-post/{{ post.id }}">Edit</a>
-                        <a href="/delete-post/{{ post.id }}">Delete</a>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-            {% endfor %}
-
+        </div>
+        <div class="post-desc">
+            {{ post.description|slice:":150" }} | Read more... 
         </div>
     </div>
+    {% endif %}
+    {% endif %}
+
+    {% elif request.user == post.author %}
+    <div onclick="location.href='/post/{{ post.id }}'" class="post">
+        <div class="post-title">
+            <h2 style="font-size:26px;">{{ post.title }}</h2>
+            <h2 style="display: inline-flex; font-size: 14px;">{{ post.year }} : {{ post.branch }} </h2>
+        </div>
+        <div class="logo">
+            <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+            <div class="inside">
+                <h2 style="font-size: 20px;">{{ post.author }}</h2>
+                <div class="time">
+                    <h2 style="font-size: 12px;">{{ post.created }}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="post-desc">
+            {{ post.description|slice:":150" }} | Read more... 
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+
 </div>
 
 {% endblock content %}

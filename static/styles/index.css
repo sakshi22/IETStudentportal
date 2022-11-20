@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https: //cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+:root {
+    --color-default: #625be8;
+    --color-second: #625be8;
+    --color-white: #fff;
+    --color-body: #e4e9f7;
+    --color-light: #e0e0e0;
+}
+
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(45deg, #f2f3ff, #8383f2, #fdd1fc);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 95%;
+    /* padding: 40px; */
+    background: rgba(228, 228, 255, 0.7);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(103, 76, 200, 0.5);
+    border-radius: 10px;
+}
+
+.post {
+    position: relative;
+    width: 70%;
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+    margin-left: 270px;
+    background: rgb(255, 255, 255);
+    box-sizing: border-box;
+    box-shadow: 0 3px 3px rgba(123, 122, 127, 0.5);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.post:hover {
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    box-shadow: 0 10px 10px rgba(123, 122, 127, 0.5);   
+}
+
+.post-title {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.post h2 {
+    text-transform: uppercase;
+
+}
+
+.post img {
+    position: absolute;
+    width: 50px;
+    margin-left: 0px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.logo {
+    width: 100%;
+    display: inline-flex;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.inside {
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: -10px;
+    padding-top: -100px;
+}
+
+.inside h2 {
+    margin-top: 20px;
+    padding-top: 0px;
+}
+
+.inside .time {
+    margin-top: -25px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.outer_post {
+    width: 100%;
+    position: relative;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    padding-top: 70px;
+    padding-bottom: 50px;
+    bottom: 10px;
+}
+

@@ -6,49 +6,82 @@
 <link rel="stylesheet" href="{% static 'styles/sidebar.css' %}">
 
 {% if request.user.is_authenticated %}
-<nav>
-    <ul>
-        <form method="GET" action="{% url 'home' %}">
-            <input type="text" , name="q" , placeholder="Search...">
-        </form>
+<div class="sidebar">
+
+    <div class="logo_details">
+        <i class="bx bxl-audible icon"></i>
+        <div class="logo_name">IET DAVV</div>
+        <i class="bx bx-menu" id="btn"></i>
+    </div>
+
+    <ul class="nav-list">
 
         <li>
-            <a href="/"><i class="fa fa-user"></i>   {{ request.user.first_name }}</a>
-        </li>
-
-        <li class="logo"><img alt=""
-                src="https://upload.wikimedia.org/wikipedia/en/a/ae/Devi_Ahilya_Vishwavidyalaya_Logo.png">
+            <i class="bx bx-search"></i>
+            <form method="GET" action="{% url 'home' %}">
+                <input type="text" name="q" placeholder="Search...">
+            </form>
+            <span class="tooltip">Search</span>
         </li>
 
         <li>
-            <a href="/"><i class="fa fa-home"></i>   home</a>
+            <a href="/">
+                <i class="fa fa-home fa-lg"></i>
+                <span class="link_name">HOME</span>
+            </a>
+            <span class="tooltip">HOME</span>
         </li>
 
         {% if request.user.is_staff == False %}
         <li>
-            <a href="/announcement"><i class="fa fa-bullhorn"></i>   announcements</a>
+            <a href="/announcement">
+                <i class="fa fa-bullhorn"></i>
+                <span class="link_name">ANNOUNCEMENT</span>
+            </a>
+            <span class="tooltip">ANNOUNCEMENT</span>
         </li>
         {% endif %}
 
         {% if request.user.is_staff == False %}
         <li>
-            <a href="/academic"><i class="fa fa-graduation-cap"></i>   accademics</a>
+            <a href="/academic">
+                <i class="fa fa-graduation-cap"></i>
+                <span class="link_name">ACADEMICS</span>
+            </a>
+            <span class="tooltip">ACADEMICS</span>
         </li>
         {% endif %}
 
+
         <li>
-            <a href="/queries"><i class="fa fa-question-circle-o" aria-hidden="true"></i>   queries</a>
+            <a href="/queries">
+                <i class="fa fa-question-circle"></i>
+                <span class="link_name">QUERIES</span>
+            </a>
+            <span class="tooltip">QUERIES</span>
         </li>
 
         {% if request.user.is_staff %}
         <li>
-            <a href="/new-post"><i class="fa fa-plus" aria-hidden="true"></i>   new post</a>
+            <a href="/new-post">
+                <i class="fa fa-plus"></i>
+                <span class="link_name">NEW POST</span>
+            </a>
+            <span class="tooltip">NEW POST</span>
         </li>
         {% endif %}
-        
-        <li>
-            <a href="/logout"><i class="fa fa-sign-out"></i>   Logout</a>
+
+        <li onclick="location.href='/logout'" class="profile">
+            <div class="profile_details">
+                <div class="profile_content">
+                    <div class="name" style="color: var(--color-default);">LOGOUT</div>
+                </div>
+
+            </div>
+            <i class="bx bx-log-out " id="log_out"></i>
         </li>
+        
     </ul>
-</nav>
+
+</div>
 {% endif %}

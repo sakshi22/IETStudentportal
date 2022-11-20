@@ -1,0 +1,34 @@
+{% load static %}
+
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'styles/navbar.css' %}">
+
+<style>
+    .navbar {
+        position: fixed;
+        left: 80px;
+        background: rgba(219, 225, 248, 1);
+        float: left;
+        width: calc(100% - 80px);
+    }
+</style>
+
+
+{% if request.user.is_authenticated %}
+
+<section class="home-section">
+    <div class="navbar navbar1">
+        <div class="text">STUDENT PORTAL</div>
+        <div class="profile_details1">
+            <div class="profile_content1">
+                <div class="sub1"><i class="fa fa-user fa-2x" aria-hidden="true"><a href="#"> {{ request.user }}</a></i>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endif %}

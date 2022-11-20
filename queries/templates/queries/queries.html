@@ -8,45 +8,55 @@
     <title>Queries</title>
     <link rel="shortcut icon" href="https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
         type="image/x-icon">
-    <link rel="stylesheet" href="{% static 'styles/post_box.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
 </head>
 
-<div class="wrapper">
-    <div class="section">
-        <div class="box-area">
+<style>
+    .box {
+        overflow-y: hidden;
+    }
+</style>
 
-            {% if request.user.is_staff == False %}
-            <form method="POST" action="">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit" value="Post" />
-            </form>
-            <hr>
-            {% endif %}
+<div class="outer_post">
 
-            {% for query in queries %}
-            {% if query.author == request.user or request.user.is_staff %}
-                <div onclick="location.href='query/{{ query.id }}'" class="post">
-                    <div class="post-author">
-                        <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+    {% if request.user.is_staff == False %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Post" />
+    </form>
+    <hr>
+    {% endif %}
 
-                        <div class="details">
-                            <h2 style="font-size: 14px;">{{ query.author }}</h2>
-                            <h2 style="font-size: 18px;"> {{ query.title }}</h2>
-                            <h2 style="font-size: 12px;">{{ query.created }}</h2>
-                            <h2 style="font-size: 10px; color: rgb(156, 152, 152);">{{ query.description }}</h2>
-                            {% if request.user == query.author %}
-                            <a href="delete-query/{{ query.id }}">Delete</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-
-            {% endfor %}
+    {% for query in queries %}
+    <div onclick="location.href='query/{{ query.id }}'" class="post">
+        <div class="post-title">
+            <h2 style="font-size:26px;">{{ query.title }}</h2>
 
         </div>
+        <div class="logo">
+            <img src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+            <div class="inside">
+                <h2 style="font-size: 20px;">{{ query.author }}</h2>
+                <div class="time">
+                    <h2 style="font-size: 12px;">{{ query.created }}</h2>
+                </div>
+            </div>
+            {% if request.user == query.author %}
+            <div>
+                <a href="/delete-query/{{ query.id }}" style="color: black;"><i class="fa fa-trash"
+                        style="font-size: 24px; margin-top: 10px;"></i></a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="post-desc">
+            {{ query.description|slice:":150" }}... <br>
+        </div>
     </div>
+
+    {% endfor %}
+
+
 </div>
 
 

@@ -2,20 +2,16 @@
 
 {% block content %}
 <title>Write Entry</title>
-<div class="wrapper">
-    <div class="section">
-        <div class="box-area">
-            
-            <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                    
-                <input type="submit" value = "Post" />
-            </form>
 
-        </div>
-    </div>
+<div class="post-form" style="border: 1px; text-align: center; place-items: center; margin-top: 100px;">
+    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+    
+        <input type="submit" value="Post" />
+    </form>
+
 </div>
 
-{% endblock content %}      
+{% endblock content %}

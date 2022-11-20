@@ -1,0 +1,45 @@
+.sidebar.open~.home-section {
+    left: 250px;
+    width: calc(100% - 250px);
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    background-color: rgba(219, 225, 248, 1);
+    height: 60px;
+    top: 0%;
+    display: flex;
+    left: 80px;
+    align-items: center;
+    text-align: center;
+    /* justify-content: space-between; */
+    left: 0;
+    border-bottom-style: solid;
+}
+
+.navbar1 {
+    position: fixed;
+}
+
+.home-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile_content1 .sub1 {
+    /* align-items: center;
+      right: 0%;
+      justify-content: end; */
+    position: relative;
+    /* margin-right: 0%; */
+    align-items: right;
+
+}
+
+.profile_details1 {
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    right: 0%;
+    margin-right: 2%;
+}

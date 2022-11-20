@@ -1,50 +1,73 @@
 .post {
-    padding: 20px 25px 5px;
-    margin: 5px 0 15px;
+    position: relative;
+    width: 70%;
+    padding: 10px 10px 10px 10px;
+    margin-top: 20px;
+    margin-left: 270px;
     background: rgba(237, 241, 247, 0.818);
     box-sizing: border-box;
     box-shadow: 0 3px 3px rgba(123, 122, 127, 0.5);
     border-radius: 10px;
+    align-items: center;
 }
 
-.post_author {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
+.post-title {
+    margin-top: 0px;
+    margin-left: 0px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
 }
 
-.post-author img {
-    width: 35px;
+.post h2 {
+    text-transform: uppercase;
+
+}
+
+.post img {
+    position: absolute;
+    width: 50px;
+    margin-left: 0px;
     border-radius: 50%;
     margin-top: 5px;
 }
 
-.post-author h1 {
-    font-size: 18px;
-    font-weight: 600;
-    color: brown;
+.inside {
+    display: inline-block;
+    margin-left: 60px;
+    margin-top: -10px;
+    padding-top: -100px;
+
 }
 
-.post-author small {
-    display: block;
-    margin-bottom: -2px;
+.inside h2 {
+    margin-top: 20px;
+    padding-top: 0px;
 }
 
-/* 
+.inside .time {
+    margin-top: -15px;
+    width: 100%;
+    display: inline-flex;
+    text-align: center;
+    justify-content: space-between;
+}
 
-                <style>.details {
-                    width: 100%;
-                    background-color: green;
-                    align-items: left;
-                    justify-content: left;
-                    position: relative;
-                    left: 0%
-                }
-        
-                .post-author {
-                    display: inline-flex;
-                    align-items: left;
-                    justify-content: left;
-                }
-        
-                </style> */
+.outer_post {
+    /* border: 2px solid red; */
+    width: 100%;
+    /* height: 400px; */
+    position: relative;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* border: 2px solid red; */
+    overflow: scroll;
+    /* margin: 70px 10px 100px 10px; */
+    padding-top: 70px;
+    padding-bottom: 50px;
+
+    /* background: grey; */
+    bottom: 10px;
+}

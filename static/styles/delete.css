@@ -1,0 +1,26 @@
+.delete {
+    width: 55%;
+    height: 25vh;
+    padding-top: 50px;
+    padding-left: 50px;
+    margin-top: 250px;
+    margin-left: 330px;
+    background: rgba(237, 241, 247, 0.818);
+    box-sizing: border-box;
+    box-shadow: 0 3px 3px rgba(123, 122, 127, 0.5);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.delete input {
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+.delete input:hover {
+    background-color: rgb(154, 158, 176);
+}
