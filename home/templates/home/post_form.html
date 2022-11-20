@@ -3,15 +3,42 @@
 {% block content %}
 <title>Write Entry</title>
 
-<div class="post-form" style="border: 1px; text-align: center; place-items: center; margin-top: 100px;">
-    <form class="form-horizontal form_middle" enctype='multipart/form-data' method="POST">
+<style>
+    .post-form {
+        width: 70%;
+        /* background-color: gold; */
+        border: 1px;
+        /* text-align: center; */
+        place-items: center;
+        margin-top: 100px;
+        margin-left: 270px;
+    }
+
+    .post-form input[type="submit"] {
+        background-color: rgba(138, 137, 151, 0.235);
+        border: none;
+        border-radius: 10px;
+        width: 100px;
+        height: 30px;
+        box-shadow: 1px 1px;
+        margin-left: 44%;
+    }
+
+    .post-form input[type="submit"]:hover {
+        background-color: rgb(44, 79, 234);
+        color: white
+    }
+</style>
+
+
+<div class="post-form">
+    <form enctype='multipart/form-data' method="POST">
         {% csrf_token %}
-        {{ form.media }}
+
         {{ form.as_p }}
-    
+
         <input type="submit" value="Post" />
     </form>
-
 </div>
 
 {% endblock content %}

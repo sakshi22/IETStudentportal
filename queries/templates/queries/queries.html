@@ -12,6 +12,30 @@
 </head>
 
 <style>
+    .post-form {
+        width: 70%;
+        border: 1px;
+        /* text-align: center; */
+        place-items: center;
+        margin-top: 50px;
+        margin-left: 270px;
+    }
+
+    .post-form input[type="submit"] {
+        background-color: rgba(138, 137, 151, 0.235);
+        border: none;
+        border-radius: 10px;
+        width: 70px;
+        height: 30px;
+        box-shadow: 1px 1px;
+        margin-left: 44%;
+    }
+
+    .post-form input[type="submit"]:hover {
+        background-color: rgb(44, 79, 234);
+        color: white
+    }
+
     .box {
         overflow-y: hidden;
     }
@@ -19,14 +43,16 @@
 
 <div class="outer_post">
 
-    {% if request.user.is_staff == False %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Post" />
-    </form>
-    <hr>
-    {% endif %}
+    <div class="post-form">
+        {% if request.user.is_staff == False %}
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Post" />
+        </form>
+        <hr>
+        {% endif %}
+    </div>
 
     {% for query in queries %}
     <div onclick="location.href='query/{{ query.id }}'" class="post">

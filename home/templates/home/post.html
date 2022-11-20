@@ -37,7 +37,7 @@
             {{ post.description|linebreaks }}
         </div>
         {% if post.file %}
-        <a href="{{ post.file.url }}"> File </a> <br><br>
+        <a href="{{ post.file.url }}" style="color: rgb(57, 11, 221); font-size: 14px;"><i class="fa fa-download" style="font-size: 20px;"></i> {{ post.file.name }}</a> <br><br>
         {% endif %}
 
         <hr style="color: black">
