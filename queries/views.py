@@ -38,7 +38,7 @@ def deleteQuery(request, qid):
         query.delete()
         return redirect('queries')
 
-    return render(request, 'home/delete.html', {'obj' : query})
+    return render(request, 'delete.html', {'obj' : query})
     
 
 

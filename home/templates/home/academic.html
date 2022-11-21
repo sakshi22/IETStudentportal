@@ -25,7 +25,7 @@
     {% if post.year == 'all' or post.year == year %}
     <div onclick="location.href='/post/{{ post.id }}'" class="post">
         <div class="post-title">
-            <h2 style="font-size:26px;">{{ post.title }}</h2>
+            <h2 style="font-size:26px; font-weight: bold;">{{ post.title }}</h2>
             <h2 style="display: inline-flex; font-size: 14px;">{{ post.year }} : {{ post.branch }} </h2>
         </div>
         <div class="logo">
@@ -47,7 +47,7 @@
     {% elif request.user == post.author %}
     <div onclick="location.href='/post/{{ post.id }}'" class="post">
         <div class="post-title">
-            <h2 style="font-size:26px;">{{ post.title }}</h2>
+            <h2 style="font-size:26px; font-weight: bold;">{{ post.title }}</h2>
             <h2 style="display: inline-flex; font-size: 14px;">{{ post.year }} : {{ post.branch }} </h2>
         </div>
         <div class="logo">

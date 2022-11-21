@@ -57,7 +57,7 @@
     {% for query in queries %}
     <div onclick="location.href='query/{{ query.id }}'" class="post">
         <div class="post-title">
-            <h2 style="font-size:26px;">{{ query.title }}</h2>
+            <h2 style="font-size:26px; font-weight: bold;">{{ query.title }}</h2>
 
         </div>
         <div class="logo">
@@ -70,7 +70,7 @@
             </div>
             {% if request.user == query.author %}
             <div>
-                <a href="/delete-query/{{ query.id }}" style="color: black;"><i class="fa fa-trash"
+                <a href="delete-query/{{ query.id }}" style="color: black;"><i class="fa fa-trash"
                         style="font-size: 24px; margin-top: 10px;"></i></a>
             </div>
             {% endif %}

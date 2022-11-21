@@ -20,11 +20,6 @@
     justify-content: space-between;
 }
 
-.in_post h2 {
-    text-transform: uppercase;
-
-}
-
 .in_post img {
     position: absolute;
     width: 50px;
