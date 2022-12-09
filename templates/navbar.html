@@ -20,9 +20,17 @@
 
 <section class="home-section">
     <div class="navbar navbar1">
+        {% if request.user.is_staff == False %}
         <div class="text" style=" font-weight: bold;">STUDENT PORTAL</div>
+        {% elif request.user.email == 'anuj.deshmukh17@gmail.com' %}
+        <div class="text" style=" font-weight: bold;">ADMINISTRATION PANEL</div>
+        {% else %}
+        <div class="text" style=" font-weight: bold;">FACULTY PANEL</div>
+        {% endif %}
         <div class="profile_details1">
             <div class="profile_content1">
+
+
                 <div class="sub1"><i class="fa fa-user fa-2x" aria-hidden="true"><a href="#"> {{ request.user }}</a></i>
                 </div>
             </div>
