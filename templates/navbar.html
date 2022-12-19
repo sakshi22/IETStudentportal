@@ -21,7 +21,7 @@
 <section class="home-section">
     <div class="navbar navbar1">
         {% if request.user.is_staff == False %}
-        <div class="text" style=" font-weight: bold;">STUDENT PORTAL</div>
+        <div class="text" style=" font-weight: bold;">STUDENT PORTAL: NOTICE BOARD</div>
         {% elif request.user.email == 'anuj.deshmukh17@gmail.com' %}
         <div class="text" style=" font-weight: bold;">ADMINISTRATION PANEL</div>
         {% else %}
