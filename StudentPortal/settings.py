@@ -27,7 +27,7 @@ SECRET_KEY = secret.django_secret_key
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+    
 
 # Application definition
 
